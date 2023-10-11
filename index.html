@@ -16,22 +16,22 @@
             <td></td>
         </tr>
         <tr>
-            <td><button>%</button><button>CE</button><button>C</button><button>back</button></td>
+            <td><button onclick="operatorButtons('%')">%</button><button>CE</button><button>C</button><button>back</button></td>
         </tr>
         <tr>
-            <td><button><sup>1</sup>&frasl;<sub>x</sub></button><button>x<sup>2</sup></button><button>√</button><button>÷</button></td>
+            <td><button><sup>1</sup>&frasl;<sub>x</sub></button><button>x<sup>2</sup></button><button>√</button><button onclick="operatorButtons('÷')">÷</button></td>
         </tr>
         <tr>
-            <td><button>7</button><button>8</button><button>9</button><button>×</button></td>
+            <td><button onclick="numbers('7')">7</button><button onclick="numbers('8')">8</button><button onclick="numbers('9')">9</button><button onclick="operatorButtons('*')">x</button></td>
         </tr>
         <tr>
-            <td><button>4</button><button>5</button><button>6</button><button>-</button></td>
+            <td><button onclick="numbers('4')">4</button><button onclick="numbers('5')">5</button><button onclick="numbers('6')">6</button><button onclick="operatorButtons('-')">-</button></td>
         </tr>
         <tr>
-            <td><button>1</button><button>2</button><button>3</button><button>+</button></td>
+            <td><button onclick="numbers('1')">1</button><button onclick="numbers('2')">2</button><button onclick="numbers('3')">3</button><button onclick="operatorButtons('+')">+</button></td>
         </tr>
         <tr>
-            <td><button><sup>+</sup>&frasl;<sub>-</sub></button><button>0</button><button>.</button><button>=</button></td>
+            <td><button><sup>+</sup>&frasl;<sub>-</sub></button><button onclick="numbers('0')">0</button><button>.</button><button>=</button></td>
         </tr>
     </table>
     <script src="script.js"></script>
