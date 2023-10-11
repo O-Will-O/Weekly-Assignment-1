@@ -16,3 +16,9 @@ function del()
 {
     num.pop();
 }
+
+function divideOneByX()
+{
+    equation = `1/${num}`;
+    
+}
