@@ -1,0 +1,17 @@
+button{
+    height: 40px;
+    width: 40px;
+    margin:5px;
+}
+#num{
+background-color: white;
+text-align: center;
+text-decoration: solid;
+font-size: 20px;
+}
+
+#op{
+    background-color: grey;
+    text-align: center;
+    font-size: 20px;
+    }
