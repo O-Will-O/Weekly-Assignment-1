@@ -1,0 +1,2 @@
+var operator;
+var numbers;
