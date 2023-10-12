@@ -53,3 +53,8 @@ function switchSign()
 {
     equation = `-${num}`;
 }
+
+function clear(){
+    currentNum = ""
+    document.getElementById("currentNum").innerText = "";
+}
