@@ -23,3 +23,16 @@ button{
 #op:hover{
     background-color:rgb(255, 166, 0);
 }
+#topDisplay
+{
+    height: 25px;
+    text-align: right;
+    padding-right: 10px;
+}
+#bottomDisplay
+{
+    height: 60px;
+    text-align: right;
+    padding-right: 10px;
+    font-size: xx-large;
+}
