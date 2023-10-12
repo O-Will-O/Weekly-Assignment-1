@@ -3,18 +3,18 @@ var currentNum = "";
 var equation = "";
 var numDisplay = "";
 var prevNum;
-
+var result;
 
 function operatorButtons(x)
 {
     operator = x;
     if(currentNum === "")
     {
-        prevNum = "0";
+        prevNum = 0;
     }
     else
     {
-        prevNum = currentNum;
+        prevNum = Number(currentNum);
     }
     document.getElementById("prevNum").innerText = prevNum;
     document.getElementById("operator").innerText = operator;
@@ -52,4 +52,35 @@ function sqrt()
 function switchSign()
 {
     equation = `-${num}`;
+}
+
+function equals()
+{
+    if(operator === "+")
+    {
+        equation = `${prevNum} + ${currentNum}`;
+        result = prevNum + Number(currentNum)
+        console.log(equation)
+        console.log(result)
+        document.getElementById("currentNum").innerText = result;
+        document.getElementById("prevNum").innerText = equation;
+        document.getElementById("operator").innerText = "";
+
+    }
+    else if(operator === "-")
+    {
+
+    }
+    else if(operator === "*")
+    {
+        
+    }
+    else if(operator === "/")
+    {
+        
+    }
+    else
+    {
+
+    }
 }
