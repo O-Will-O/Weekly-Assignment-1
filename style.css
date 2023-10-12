@@ -15,3 +15,16 @@ font-size: 20px;
     text-align: center;
     font-size: 20px;
     }
+#topDisplay
+{
+    height: 25px;
+    text-align: right;
+    padding-right: 10px;
+}
+#bottomDisplay
+{
+    height: 60px;
+    text-align: right;
+    padding-right: 10px;
+    font-size: xx-large;
+}
