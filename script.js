@@ -31,3 +31,18 @@ function divideOneByX()
     equation = `1/${num}`;
     
 }
+
+function square()
+{
+    equation = `${num}^2`;
+}
+
+function sqrt()
+{
+    equation = `√${num}`;
+}
+
+function switchSign()
+{
+    equation = `-${num}`;
+}
