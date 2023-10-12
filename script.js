@@ -1,19 +1,25 @@
 var operator = "";
-var currentNum = "0";
+var currentNum = "";
 var equation = "";
 var numDisplay = "";
 var prevNum;
-document.getElementById("currentNum").innerText = currentNum;
 
 
 function operatorButtons(x)
 {
     operator = x;
-    prevNum = currentNum;
+    if(currentNum === "")
+    {
+        prevNum = "0";
+    }
+    else
+    {
+        prevNum = currentNum;
+    }
     document.getElementById("prevNum").innerText = prevNum;
     document.getElementById("operator").innerText = operator;
-    currentNum = 0;
-    document.getElementById("currentNum").innerText = currentNum;
+    currentNum = "";
+    document.getElementById("currentNum").innerText = "";
 }
 function numbers(x)
 {
@@ -23,7 +29,8 @@ function numbers(x)
 
 function del()
 {
-    currentNum.pop();
+    currentNum = currentNum.slice(0, -1);
+    document.getElementById("currentNum").innerText = currentNum;
 }
 
 function divideOneByX()
