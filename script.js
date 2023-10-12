@@ -32,6 +32,12 @@ function del()
     document.getElementById("currentNum").innerText = currentNum;
 }
 
+function ce()
+{
+    currentNum = "";
+    document.getElementById("currentNum").innerText = "";
+}
+
 function divideOneByX()
 {
     equation = `1/${num}`;
@@ -55,34 +61,58 @@ function switchSign()
     document.getElementById("currentNum").innerText = currentNum;
 }
 
-function clear(){
-    currentNum = ""
-    document.getElementById("currentNum").innerText = "";
-}
-
 function equals()
 {
     if(operator === "+")
     {
         equation = `${prevNum} + ${currentNum}`;
         result = prevNum + Number(currentNum)
-        console.log(equation)
-        console.log(result)
         document.getElementById("currentNum").innerText = result;
         document.getElementById("equationDis").innerText = equation;
-
+        let x = document.createElement("p")
+        x.innerText = `${prevNum} + ${currentNum} = ${result}`;
+        document.getElementById("history").appendChild(x)
     }
     else if(operator === "-")
     {
-
+        equation = `${prevNum} - ${currentNum}`;
+        result = prevNum - Number(currentNum)
+        document.getElementById("currentNum").innerText = result;
+        document.getElementById("equationDis").innerText = equation;
+        let x = document.createElement("p")
+        x.innerText = `${prevNum} - ${currentNum} = ${result}`;
+        document.getElementById("history").appendChild(x)
     }
     else if(operator === "*")
     {
-        
+        equation = `${prevNum} * ${currentNum}`;
+        result = prevNum * Number(currentNum)
+        document.getElementById("currentNum").innerText = result;
+        document.getElementById("equationDis").innerText = equation;
+        let x = document.createElement("p")
+        x.innerText = `${prevNum} * ${currentNum} = ${result}`;
+        document.getElementById("history").appendChild(x)
     }
-    else if(operator === "/")
+    else if(operator === "÷")
     {
-        
+        equation = `${prevNum} ÷ ${currentNum}`;
+        result = prevNum / Number(currentNum)
+        document.getElementById("currentNum").innerText = result;
+        document.getElementById("equationDis").innerText = equation;
+        let x = document.createElement("p")
+        x.innerText = `${prevNum} ÷ ${currentNum} = ${result}`;
+        document.getElementById("history").appendChild(x)
+        console.log(result)
+    }
+    else if(operator === "%")
+    {
+        equation = `${prevNum} % ${currentNum}`;
+        result = (prevNum/100) * Number(currentNum)
+        document.getElementById("currentNum").innerText = result;
+        document.getElementById("equationDis").innerText = equation;
+        let x = document.createElement("p")
+        x.innerText = `${prevNum} % ${currentNum} = ${result}`;
+        document.getElementById("history").appendChild(x)
     }
     else
     {
