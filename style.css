@@ -45,3 +45,10 @@ button{
     padding-right: 10px;
     font-size: xx-large;
 }
+
+#history
+{
+    padding-left: 10px;
+    width: 100px;
+    vertical-align: top;
+}
