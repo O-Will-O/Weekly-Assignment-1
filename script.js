@@ -1,7 +1,10 @@
 var operator = "";
-var num = "";
+var currentNum = "";
 var equation = "";
 var numDisplay = "";
+var prevNum;
+
+
 
 function operatorButtons(x)
 {
@@ -14,7 +17,7 @@ function numbers(x)
 
 function del()
 {
-    num.pop();
+    currentNum.pop();
 }
 
 function divideOneByX()
