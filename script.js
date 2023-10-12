@@ -16,8 +16,7 @@ function operatorButtons(x)
     {
         prevNum = Number(currentNum);
     }
-    document.getElementById("prevNum").innerText = prevNum;
-    document.getElementById("operator").innerText = operator;
+    document.getElementById("equationDis").innerText = prevNum + x;
     currentNum = "";
     document.getElementById("currentNum").innerText = "";
 }
@@ -51,7 +50,9 @@ function sqrt()
 
 function switchSign()
 {
-    equation = `-${num}`;
+    currentNum = -currentNum;
+    console.log(currentNum)
+    document.getElementById("currentNum").innerText = currentNum;
 }
 
 function clear(){
@@ -68,8 +69,7 @@ function equals()
         console.log(equation)
         console.log(result)
         document.getElementById("currentNum").innerText = result;
-        document.getElementById("prevNum").innerText = equation;
-        document.getElementById("operator").innerText = "";
+        document.getElementById("equationDis").innerText = equation;
 
     }
     else if(operator === "-")
