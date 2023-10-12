@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table rules="all">
+        <tr>
+            <td></td>
+            <td id="history" rowspan="8"></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td><button id="op" onclick="operatorButtons('%')">%</button><button>CE</button><button>C</button><button>del</button></td>
+        </tr>
+        <tr>
+            <td><button id="op"><sup>1</sup>&frasl;<sub>x</sub></button><button id="op">x<sup>2</sup></button><button id="op">√</button><button onclick="operatorButtons('÷')" id="op">÷</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="numbers('7')" id="num">7</button><button onclick="numbers('8')" id="num">8</button><button onclick="numbers('9')" id="num">9</button><button id="op" onclick="operatorButtons('*')">x</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="numbers('4')" id="num">4</button><button onclick="numbers('5')" id="num">5</button><button onclick="numbers('6')" id="num">6</button><button onclick="operatorButtons('-')" id="op">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="numbers('1')" id="num">1</button><button onclick="numbers('2')" id="num">2</button><button onclick="numbers('3')" id="num">3</button><button onclick="operatorButtons('+')" id="op">+</button></td>
+        </tr>
+        <tr>
+            <td><button id="op"><sup>+</sup>&frasl;<sub>-</sub></button><button id="num" onclick="numbers('0')">0</button><button id="op">.</button><button id="op">=</button></td>
+        </tr>
+    </table>
+    <script src="script.js"></script>
+</body>
+</html>
