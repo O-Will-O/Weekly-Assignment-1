@@ -26,7 +26,7 @@ function numbers(x)
 {
     if(prevKey !== "" && test === 1)
     {
-        currentNum = ""
+        currentNum = "";
     }
     currentNum += x;
     document.getElementById("currentNum").innerText = currentNum;
@@ -117,27 +117,31 @@ function equals()
         {
             equation = `${storedAns} + ${storedNum}`;
             storedAns += storedNum
+            result = storedAns;
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${storedAns} + ${storedNum} = ${result}`;
+            x.innerText = `${storedAns} + ${storedNum} = ${result + storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "+"
-            result = storedAns;
             test=1;
+            storedAns += storedNum
+            result = storedAns;
         }
         else if(prevKey !== "+" && prevKey !== "")
         {
             equation = `${storedAns} + ${storedNum}`;
             storedAns += storedNum
+            result = storedAns;
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${result} + ${storedNum} = ${storedAns}`;
+            x.innerText = `${result} + ${storedNum} = ${storedAns + storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "+"
-            result = storedAns;
             test = 1;
+            storedAns += storedNum
+            result = storedAns;
         }
         else
         {
@@ -159,27 +163,28 @@ function equals()
         {
             equation = `${result} - ${storedNum}`;
             storedAns -= storedNum
+            result = storedAns
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${storedAns} - ${storedNum} = ${result}`;
+            x.innerText = `${storedAns} - ${storedNum} = ${result - storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "-"
-            result = storedAns
             test = 1
         }
         else if(prevKey !== "-" && prevKey !== "")
         {
             equation = `${storedAns} - ${storedNum}`;
-            storedAns -= storedNum
+            result = storedAns;
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${result} - ${storedNum} = ${storedAns}`;
+            x.innerText = `${result} - ${storedNum} = ${storedAns - storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "-"
-            result = storedAns;
             test = 1
+            storedAns -= storedNum
+            result = storedAns;
         }
         else
         {
@@ -201,10 +206,11 @@ function equals()
         {
             equation = `${result} * ${storedNum}`;
             storedAns *= storedNum
+            result = storedAns
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${storedAns} * ${storedNum} = ${result}`;
+            x.innerText = `${storedAns} * ${storedNum} = ${result * storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "*"
             result = storedAns;
@@ -213,13 +219,14 @@ function equals()
         else if(prevKey !== "*" && prevKey !== "")
         {
             equation = `${storedAns} * ${storedNum}`;
-            storedAns *= storedNum
+            result =storedAns
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${result} * ${storedNum} = ${storedAns}`;
+            x.innerText = `${result} * ${storedNum} = ${storedAns * storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "*"
+            storedAns *= storedNum
             result = storedAns;
             test = 1
         }
@@ -243,10 +250,11 @@ function equals()
         {
             equation = `${result} ÷ ${storedNum}`;
             storedAns = storedAns / storedNum
+            result = storedAns
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${storedAns} ÷ ${storedNum} = ${result}`;
+            x.innerText = `${storedAns} ÷ ${storedNum} = ${result / storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "÷"
             result = storedAns;
@@ -255,13 +263,14 @@ function equals()
         else if(prevKey !== "÷" && prevKey !== "")
         {
             equation = `${storedAns} ÷ ${storedNum}`;
-            storedAns = storedAns / storedNum;
+            result = storedAns
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${result} ÷ ${storedNum} = ${storedAns}`;
+            x.innerText = `${result} ÷ ${storedNum} = ${storedAns / storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "÷"
+            storedAns = storedAns / storedNum;
             result = storedAns;
             test = 1
         }
@@ -285,10 +294,11 @@ function equals()
         {
             equation = `${result} % ${storedNum}`;
             storedAns = (storedAns/100) * storedNum;
+            result = storedAns
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${storedAns} % ${storedNum} = ${result}`;
+            x.innerText = `${storedAns} % ${storedNum} = ${(result/100) * storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "%"
             result = storedAns;
@@ -297,13 +307,14 @@ function equals()
         else if(prevKey !== "%" && prevKey !== "")
         {
             equation = `${storedAns} % ${storedNum}`;
-            storedAns = (storedAns/100) * storedNum;
+            result = storedAns
             document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${result} % ${storedNum} = ${storedAns}`;
+            x.innerText = `${result} % ${storedNum} = ${(storedAns/100) * storedNum}`;
             document.getElementById("history").appendChild(x)
             prevKey = "%"
+            storedAns = (storedAns/100) * storedNum;
             result = storedAns;
             test = 1
         }
@@ -328,7 +339,7 @@ function equals()
         document.getElementById("currentNum").innerText = result;
         document.getElementById("equationDis").innerText = equation;
         let x = document.createElement("p");
-        x.innerText = `√${storedAns} = ${result}`;
+        x.innerText = `√${storedAns} = ${Math.sqrt(result)}`;
         document.getElementById("history").appendChild(x);
         prevKey = "sqrt";
         storedAns = result
@@ -341,7 +352,7 @@ function equals()
         document.getElementById("currentNum").innerText = result;
         document.getElementById("equationDis").innerText = equation;
         let x = document.createElement("p");
-        x.innerText = `${currentNum}^2 = ${result}`;
+        x.innerText = `${currentNum}^2 = ${result * result}`;
         document.getElementById("history").appendChild(x);
         prevKey = "square";
         storedAns = result;
@@ -354,7 +365,7 @@ function equals()
         document.getElementById("currentNum").innerText = result;
         document.getElementById("equationDis").innerText = equation;
         let x = document.createElement("p");
-        x.innerText = `1/${storedAns} = ${result}`;
+        x.innerText = `1/${storedAns} = ${1/result}`;
         document.getElementById("history").appendChild(x);
         prevKey = "1/x";
         storedAns = result;
