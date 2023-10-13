@@ -24,6 +24,10 @@ function operatorButtons(x)
 }
 function numbers(x)
 {
+    if(prevKey !== "" && test === 1)
+    {
+        currentNum = ""
+    }
     currentNum += x;
     document.getElementById("currentNum").innerText = currentNum;
 }
@@ -51,11 +55,11 @@ function c()
     operator = "";
     currentNum = "";
     equation = "";
-    prevNum;
-    result;
+    prevNum = 0
+    result = ""
     prevKey = "";
-    storedNum;
-    storedAns;
+    storedNum = ""
+    storedAns = ""
     document.getElementById("equationDis").innerText= "";
     document.getElementById("currentNum").innerText = "";
 }
@@ -102,7 +106,7 @@ function switchSign()
     console.log(currentNum)
     document.getElementById("currentNum").innerText = currentNum;
 }
-
+var test = 0
 function equals()
 {
     storedNum = Number(currentNum);
@@ -120,6 +124,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "+"
             result = storedAns;
+            test=1;
         }
         else if(prevKey !== "+" && prevKey !== "")
         {
@@ -132,6 +137,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "+"
             result = storedAns;
+            test = 1;
         }
         else
         {
@@ -144,6 +150,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "+"
             storedAns = result;
+            test = 0
         }
     }
     else if(operator === "-")
@@ -158,7 +165,8 @@ function equals()
             x.innerText = `${storedAns} - ${storedNum} = ${result}`;
             document.getElementById("history").appendChild(x)
             prevKey = "-"
-            result = storedAns;
+            result = storedAns
+            test = 1
         }
         else if(prevKey !== "-" && prevKey !== "")
         {
@@ -171,6 +179,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "-"
             result = storedAns;
+            test = 1
         }
         else
         {
@@ -183,6 +192,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "-"
             storedAns = result;
+            test = 0
         }
     }
     else if(operator === "*")
@@ -198,6 +208,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "*"
             result = storedAns;
+            test = 1
         }
         else if(prevKey !== "*" && prevKey !== "")
         {
@@ -210,6 +221,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "*"
             result = storedAns;
+            test = 1
         }
         else
         {
@@ -222,6 +234,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "*"
             storedAns = result;
+            test = 0
         }
     }
     else if(operator === "÷")
@@ -237,6 +250,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "÷"
             result = storedAns;
+            test = 1
         }
         else if(prevKey !== "÷" && prevKey !== "")
         {
@@ -249,6 +263,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "÷"
             result = storedAns;
+            test = 1
         }
         else
         {
@@ -261,6 +276,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "÷"
             storedAns = result;
+            test = 0
         }
     }
     else if(operator === "%")
@@ -275,6 +291,8 @@ function equals()
             x.innerText = `${storedAns} % ${storedNum} = ${result}`;
             document.getElementById("history").appendChild(x)
             prevKey = "%"
+            result = storedAns;
+            test = 1
         }
         else if(prevKey !== "%" && prevKey !== "")
         {
@@ -287,6 +305,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "%"
             result = storedAns;
+            test = 1
         }
         else
         {
@@ -299,6 +318,7 @@ function equals()
             document.getElementById("history").appendChild(x)
             prevKey = "%"
             storedAns = result;
+            test = 0
         }
     }
     else if(prevKey === "sqrt")
@@ -312,6 +332,7 @@ function equals()
         document.getElementById("history").appendChild(x);
         prevKey = "sqrt";
         storedAns = result
+        test = 1
     }
     else if(prevKey === "square")
     {
@@ -324,6 +345,7 @@ function equals()
         document.getElementById("history").appendChild(x);
         prevKey = "square";
         storedAns = result;
+        test = 1
     }
     else if(prevKey === "1/x")
     {
@@ -336,5 +358,6 @@ function equals()
         document.getElementById("history").appendChild(x);
         prevKey = "1/x";
         storedAns = result;
+        test = 1
     }
 }
