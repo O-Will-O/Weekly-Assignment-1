@@ -3,7 +3,6 @@ var currentNum = "";
 var equation = "";
 var prevNum;
 var result;
-var prevAnswer;
 var prevKey = "";
 var storedNum;
 var storedAns;
@@ -29,6 +28,12 @@ function numbers(x)
     document.getElementById("currentNum").innerText = currentNum;
 }
 
+function decimal()
+{
+    currentNum += ".";
+    document.getElementById("currentNum").innerText = currentNum;
+}
+
 function del()
 {
     currentNum = currentNum.slice(0, -1);
@@ -43,7 +48,14 @@ function ce()
 
 function c()
 {
+    operator = "";
     currentNum = "";
+    equation = "";
+    prevNum;
+    result;
+    prevKey = "";
+    storedNum;
+    storedAns;
     document.getElementById("equationDis").innerText= "";
     document.getElementById("currentNum").innerText = "";
 }
@@ -57,6 +69,7 @@ function divideOneByX()
     let x = document.createElement("p");
     x.innerText = `1/${currentNum} = ${result}`;
     document.getElementById("history").appendChild(x);
+    prevKey = "1/x";
 }
 
 function square()
@@ -68,6 +81,7 @@ function square()
     let x = document.createElement("p");
     x.innerText = `${currentNum}^2 = ${result}`;
     document.getElementById("history").appendChild(x);
+    prevKey = "square";
 }
 
 function sqrt2()
@@ -79,6 +93,7 @@ function sqrt2()
     let x = document.createElement("p");
     x.innerText = `√${currentNum} = ${result}`;
     document.getElementById("history").appendChild(x);
+    prevKey = "sqrt";
 }
 
 function switchSign()
@@ -96,14 +111,27 @@ function equals()
     {
         if(prevKey === "+")
         {
-            equation = `${result} + ${storedNum}`;
-            result += storedNum
-            document.getElementById("currentNum").innerText = result;
+            equation = `${storedAns} + ${storedNum}`;
+            storedAns += storedNum
+            document.getElementById("currentNum").innerText = storedAns;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
             x.innerText = `${storedAns} + ${storedNum} = ${result}`;
             document.getElementById("history").appendChild(x)
             prevKey = "+"
+            result = storedAns;
+        }
+        else if(prevKey !== "+" && prevKey !== "")
+        {
+            equation = `${storedAns} + ${storedNum}`;
+            storedAns += storedNum
+            document.getElementById("currentNum").innerText = storedAns;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${result} + ${storedNum} = ${storedAns}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "+"
+            result = storedAns;
         }
         else
         {
@@ -112,58 +140,201 @@ function equals()
             document.getElementById("currentNum").innerText = result;
             document.getElementById("equationDis").innerText = equation;
             let x = document.createElement("p")
-            x.innerText = `${prevNum} + ${currentNum} = ${result}`;
+            x.innerText = `${prevNum} + ${storedNum} = ${result}`;
             document.getElementById("history").appendChild(x)
             prevKey = "+"
-            console.log(currentNum)
-            console.log(prevNum)
-            console.log(equation)
-            console.log(result)
+            storedAns = result;
         }
     }
     else if(operator === "-")
     {
-        equation = `${prevNum} - ${currentNum}`;
-        result = prevNum - Number(currentNum)
-        document.getElementById("currentNum").innerText = result;
-        document.getElementById("equationDis").innerText = equation;
-        let x = document.createElement("p")
-        x.innerText = `${prevNum} - ${currentNum} = ${result}`;
-        document.getElementById("history").appendChild(x)
+        if(prevKey === "-")
+        {
+            equation = `${result} - ${storedNum}`;
+            storedAns -= storedNum
+            document.getElementById("currentNum").innerText = storedAns;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${storedAns} - ${storedNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "-"
+            result = storedAns;
+        }
+        else if(prevKey !== "-" && prevKey !== "")
+        {
+            equation = `${storedAns} - ${storedNum}`;
+            storedAns -= storedNum
+            document.getElementById("currentNum").innerText = storedAns;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${result} - ${storedNum} = ${storedAns}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "-"
+            result = storedAns;
+        }
+        else
+        {
+            equation = `${prevNum} - ${currentNum}`;
+            result = prevNum - Number(storedNum)
+            document.getElementById("currentNum").innerText = result;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${prevNum} - ${storedNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "-"
+            storedAns = result;
+        }
     }
     else if(operator === "*")
     {
-        equation = `${prevNum} * ${currentNum}`;
-        result = prevNum * Number(currentNum)
-        document.getElementById("currentNum").innerText = result;
-        document.getElementById("equationDis").innerText = equation;
-        let x = document.createElement("p")
-        x.innerText = `${prevNum} * ${currentNum} = ${result}`;
-        document.getElementById("history").appendChild(x)
+        if(prevKey === "*")
+        {
+            equation = `${result} * ${storedNum}`;
+            storedAns *= storedNum
+            document.getElementById("currentNum").innerText = storedAns;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${storedAns} * ${storedNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "*"
+            result = storedAns;
+        }
+        else if(prevKey !== "*" && prevKey !== "")
+        {
+            equation = `${storedAns} * ${storedNum}`;
+            storedAns *= storedNum
+            document.getElementById("currentNum").innerText = storedAns;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${result} * ${storedNum} = ${storedAns}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "*"
+            result = storedAns;
+        }
+        else
+        {
+            equation = `${prevNum} * ${storedNum}`;
+            result = prevNum * Number(storedNum)
+            document.getElementById("currentNum").innerText = result;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${prevNum} * ${storedNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "*"
+            storedAns = result;
+        }
     }
     else if(operator === "÷")
     {
-        equation = `${prevNum} ÷ ${currentNum}`;
-        result = prevNum / Number(currentNum)
-        document.getElementById("currentNum").innerText = result;
-        document.getElementById("equationDis").innerText = equation;
-        let x = document.createElement("p")
-        x.innerText = `${prevNum} ÷ ${currentNum} = ${result}`;
-        document.getElementById("history").appendChild(x)
-        console.log(result)
+        if(prevKey === "÷")
+        {
+            equation = `${result} ÷ ${storedNum}`;
+            storedAns = storedAns / storedNum
+            document.getElementById("currentNum").innerText = storedAns;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${storedAns} ÷ ${storedNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "÷"
+            result = storedAns;
+        }
+        else if(prevKey !== "÷" && prevKey !== "")
+        {
+            equation = `${storedAns} ÷ ${storedNum}`;
+            storedAns = storedAns / storedNum;
+            document.getElementById("currentNum").innerText = storedAns;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${result} ÷ ${storedNum} = ${storedAns}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "÷"
+            result = storedAns;
+        }
+        else
+        {
+            equation = `${prevNum} ÷ ${storedNum}`;
+            result = prevNum / Number(storedNum)
+            document.getElementById("currentNum").innerText = result;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${prevNum} ÷ ${storedNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "÷"
+            storedAns = result;
+        }
     }
     else if(operator === "%")
     {
-        equation = `${prevNum} % ${currentNum}`;
-        result = (prevNum/100) * Number(currentNum)
+        if(prevKey === "%")
+        {
+            equation = `${result} % ${storedNum}`;
+            storedAns = (storedAns/100) * storedNum;
+            document.getElementById("currentNum").innerText = storedAns;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${storedAns} % ${storedNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "%"
+        }
+        else if(prevKey !== "%" && prevKey !== "")
+        {
+            equation = `${storedAns} % ${storedNum}`;
+            storedAns = (storedAns/100) * storedNum;
+            document.getElementById("currentNum").innerText = storedAns;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${result} % ${storedNum} = ${storedAns}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "%"
+            result = storedAns;
+        }
+        else
+        {
+            equation = `${prevNum} % ${storedNum}`;
+            result = (prevNum/100) * Number(storedNum)
+            document.getElementById("currentNum").innerText = result;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${prevNum} % ${storedNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "%"
+            storedAns = result;
+        }
+    }
+    else if(prevKey === "sqrt")
+    {
+        equation = `√${storedAns}`;
+        result = Math.sqrt(storedAns);
         document.getElementById("currentNum").innerText = result;
         document.getElementById("equationDis").innerText = equation;
-        let x = document.createElement("p")
-        x.innerText = `${prevNum} % ${currentNum} = ${result}`;
-        document.getElementById("history").appendChild(x)
+        let x = document.createElement("p");
+        x.innerText = `√${storedAns} = ${result}`;
+        document.getElementById("history").appendChild(x);
+        prevKey = "sqrt";
+        storedAns = result
     }
-    else
+    else if(prevKey === "square")
     {
-
+        equation = `${storedAns}^2`;
+        result = Math.pow(storedAns, 2);
+        document.getElementById("currentNum").innerText = result;
+        document.getElementById("equationDis").innerText = equation;
+        let x = document.createElement("p");
+        x.innerText = `${currentNum}^2 = ${result}`;
+        document.getElementById("history").appendChild(x);
+        prevKey = "square";
+        storedAns = result;
+    }
+    else if(prevKey === "1/x")
+    {
+        equation = `1/${storedAns}`;
+        result = 1 / storedAns
+        document.getElementById("currentNum").innerText = result;
+        document.getElementById("equationDis").innerText = equation;
+        let x = document.createElement("p");
+        x.innerText = `1/${storedAns} = ${result}`;
+        document.getElementById("history").appendChild(x);
+        prevKey = "1/x";
+        storedAns = result;
     }
 }
