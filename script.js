@@ -3,6 +3,10 @@ var currentNum = "";
 var equation = "";
 var prevNum;
 var result;
+var prevAnswer;
+var prevKey = "";
+var storedNum;
+var storedAns;
 
 function operatorButtons(x)
 {
@@ -86,15 +90,36 @@ function switchSign()
 
 function equals()
 {
+    storedNum = Number(currentNum);
+    storedAns = result;
     if(operator === "+")
     {
-        equation = `${prevNum} + ${currentNum}`;
-        result = prevNum + Number(currentNum)
-        document.getElementById("currentNum").innerText = result;
-        document.getElementById("equationDis").innerText = equation;
-        let x = document.createElement("p")
-        x.innerText = `${prevNum} + ${currentNum} = ${result}`;
-        document.getElementById("history").appendChild(x)
+        if(prevKey === "+")
+        {
+            equation = `${result} + ${storedNum}`;
+            result += storedNum
+            document.getElementById("currentNum").innerText = result;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${storedAns} + ${storedNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "+"
+        }
+        else
+        {
+            equation = `${prevNum} + ${currentNum}`;
+            result = prevNum + Number(currentNum)
+            document.getElementById("currentNum").innerText = result;
+            document.getElementById("equationDis").innerText = equation;
+            let x = document.createElement("p")
+            x.innerText = `${prevNum} + ${currentNum} = ${result}`;
+            document.getElementById("history").appendChild(x)
+            prevKey = "+"
+            console.log(currentNum)
+            console.log(prevNum)
+            console.log(equation)
+            console.log(result)
+        }
     }
     else if(operator === "-")
     {
