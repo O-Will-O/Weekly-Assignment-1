@@ -1,7 +1,6 @@
 var operator = "";
 var currentNum = "";
 var equation = "";
-var numDisplay = "";
 var prevNum;
 var result;
 
@@ -38,20 +37,44 @@ function ce()
     document.getElementById("currentNum").innerText = "";
 }
 
+function c()
+{
+    currentNum = "";
+    document.getElementById("equationDis").innerText= "";
+    document.getElementById("currentNum").innerText = "";
+}
+
 function divideOneByX()
 {
-    equation = `1/${num}`;
-    
+    equation = `1/${currentNum}`;
+    result = 1 / Number(currentNum)
+    document.getElementById("currentNum").innerText = result;
+    document.getElementById("equationDis").innerText = equation;
+    let x = document.createElement("p");
+    x.innerText = `1/${currentNum} = ${result}`;
+    document.getElementById("history").appendChild(x);
 }
 
 function square()
 {
-    equation = `${num}^2`;
+    equation = `${currentNum}^2`;
+    result = Math.pow(Number(currentNum) , 2);
+    document.getElementById("currentNum").innerText = result;
+    document.getElementById("equationDis").innerText = equation;
+    let x = document.createElement("p");
+    x.innerText = `${currentNum}^2 = ${result}`;
+    document.getElementById("history").appendChild(x);
 }
 
-function sqrt()
+function sqrt2()
 {
-    equation = `√${num}`;
+    equation = `√${currentNum}`;
+    result = Math.sqrt(Number(currentNum));
+    document.getElementById("currentNum").innerText = result;
+    document.getElementById("equationDis").innerText = equation;
+    let x = document.createElement("p");
+    x.innerText = `√${currentNum} = ${result}`;
+    document.getElementById("history").appendChild(x);
 }
 
 function switchSign()
