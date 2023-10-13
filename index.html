@@ -33,7 +33,10 @@
             <td><button id="op" onclick="switchSign()"><sup>+</sup>&frasl;<sub>-</sub></button><button id="num" onclick="numbers('0')">0</button><button id="op">.</button><button id="equal" onclick="equals()">=</button></td>
         </tr>
     </table>
-    <p id="history"><Strong>History</Strong></p>
+    <div class="history">
+    <p id="hisText"><Strong>History</Strong></p>
+    <textarea rows="8" cols="33" id="history" readonly></textarea>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
